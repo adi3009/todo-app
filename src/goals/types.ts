@@ -1,19 +1,21 @@
-import { Action } from "../store";
+import type { Action } from "redux";
 
 interface Goal {
   id: number;
   name: string;
 }
 
-interface AddAction extends Action {
+type GoalAction = Action<string>;
+
+interface AddAction extends GoalAction {
   goal: Goal;
 }
 
-interface RemoveAction extends Action {
+interface RemoveAction extends GoalAction {
   id: number;
 }
 
-type Actions = Action | AddAction | RemoveAction;
+type Actions = GoalAction | AddAction | RemoveAction;
 
 export const ADD = "ADD_GOAL";
 

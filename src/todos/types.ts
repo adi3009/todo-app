@@ -1,4 +1,4 @@
-import type { Action } from "../store";
+import type { Action } from "redux";
 
 export interface Todo {
   id?: number;
@@ -6,19 +6,21 @@ export interface Todo {
   complete: boolean;
 }
 
-export interface AddAction extends Action {
+type TodoAction = Action<string>;
+
+export interface AddAction extends TodoAction {
   todo: Todo;
 }
 
-export interface RemoveAction extends Action {
+export interface RemoveAction extends TodoAction {
   id: number;
 }
 
-export interface ToggleAction extends Action {
+export interface ToggleAction extends TodoAction {
   id: number;
 }
 
-export type Actions = Action | AddAction | RemoveAction | ToggleAction;
+export type Actions = TodoAction | AddAction | RemoveAction | ToggleAction;
 
 export const ADD = "ADD_TODO";
 
