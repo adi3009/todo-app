@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todos Goals - State Management</title>
+    <link rel="stylesheet" type="text/css" href="/app.css" />
+    <script type="module" src="./src/ui.js"></script>
+  </head>
+  <body>
+    <div class="container mx-auto">
+      <section class="flex flex-col items-center">
+        <h1 class="text-blue-800 text-2xl font-bold py-3 mb-2">Todos</h1>
+        <div class="border-b-2 pb-2 flex gap-x-5 w-4/5">
+          <input
+            type="text"
+            id="todo-text"
+            data-testid="todoTextInput"
+            name="todo"
+            placeholder="New Todo"
+            class="border-b-2 border-solid border-blue-800 text-xl focus:outline-none flex-1"
+          />
+          <button
+            id="add-todo-button"
+            type="button"
+            class="border-2 border-blue-800 bg-blue-700 hover:bg-blue-600 text-slate-50 border-solid px-1.5 py-1.5"
+          >
+            Add Todo
+          </button>
+        </div>
+        <ul id="todo-list" data-testid="todoList"></ul>
+      </section>
+    </div>
+  </body>
+</html>
