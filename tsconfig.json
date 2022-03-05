@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "target": "es2016",
     "module": "es6",
     "moduleResolution": "node",
@@ -8,6 +9,6 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src/*.ts"],
+  "include": ["src/*.ts", "src/*.tsx"],
   "exclude": ["src/*.test.ts"]
 }

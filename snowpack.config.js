@@ -1,9 +1,10 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 export default {
   mount: {
-    /* ... */
+    public: "/",
+    src: "/src",
   },
-  plugins: ["@snowpack/plugin-postcss"],
+  plugins: ["@snowpack/plugin-postcss", "@snowpack/plugin-react-refresh"],
   packageOptions: {
     /* ... */
   },
