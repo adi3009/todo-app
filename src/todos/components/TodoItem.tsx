@@ -1,16 +1,18 @@
 import React from "react";
-import { useAppDispatch } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
 import { removeAction, toggleAction } from "../actions";
 import type { Todo } from "../types";
 
 type ItemProps = {
-  todo: Todo;
+  id: number;
 };
 
-export function TodoItem(props: ItemProps) {
-  const todo = props.todo;
+export function ItemComponent(props: ItemProps) {
+  const id = props.id;
 
-  const id = todo.id as number;
+  const todo = useAppSelector((state) =>
+    state.todos.find((item) => item.id === id)
+  ) as Todo;
 
   let labelClass = "mr-4 flex-1";
 
@@ -26,6 +28,7 @@ export function TodoItem(props: ItemProps) {
       data-testid={`todo-item-${id}`}
       className="py-5 border-b-2 flex gap-x-5"
     >
+      {console.log(`Item ${todo.name} - Render`)}
       <label htmlFor={`status-${id}`} className={labelClass}>
         {todo.name}
       </label>
@@ -47,3 +50,5 @@ export function TodoItem(props: ItemProps) {
     </li>
   );
 }
+
+export const TodoItem = React.memo(ItemComponent);

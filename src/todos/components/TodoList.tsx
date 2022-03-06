@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
+import { shallowEqual } from "react-redux";
 import { nextId } from "../../util";
 import { addAction } from "../actions";
 import type { Todo } from "../types";
@@ -24,14 +25,16 @@ export function TodoList() {
     setItemValue("");
   }
 
-  const items: Array<Todo> = useAppSelector((state) => state.todos);
+  const itemIds = useAppSelector(
+    (state) => state.todos.map((item) => item.id as number),
+    shallowEqual
+  );
 
-  const renderedItems = items.map((item) => (
-    <TodoItem key={item.id} todo={item} />
-  ));
+  const renderedItems = itemIds.map((id) => <TodoItem key={id} id={id} />);
 
   return (
     <>
+      {console.log("List - Render")}
       <h1 className="text-blue-800 text-2xl font-bold py-3 mb-2">Todos</h1>
       <div className="border-b-2 pb-2 flex gap-x-5 w-4/5">
         <input
