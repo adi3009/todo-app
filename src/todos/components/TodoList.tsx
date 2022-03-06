@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AppState } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { nextId } from "../../util";
+import { addAction } from "../actions";
 import type { Todo } from "../types";
 import { TodoItem } from "./TodoItem";
-import { addAction } from "../actions";
-import { nextId } from "../../util";
 
 export function TodoList() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [itemValue, setItemValue] = useState("");
 
@@ -25,7 +24,7 @@ export function TodoList() {
     setItemValue("");
   }
 
-  const items: Array<Todo> = useSelector((state: AppState) => state.todos);
+  const items: Array<Todo> = useAppSelector((state) => state.todos);
 
   const renderedItems = items.map((item) => (
     <TodoItem key={item.id} todo={item} />

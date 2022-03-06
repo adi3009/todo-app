@@ -1,7 +1,7 @@
 import React from "react";
-import type { Todo } from "../types";
+import { useAppDispatch } from "../../store";
 import { removeAction, toggleAction } from "../actions";
-import { useDispatch } from "react-redux";
+import type { Todo } from "../types";
 
 type ItemProps = {
   todo: Todo;
@@ -18,7 +18,7 @@ export function TodoItem(props: ItemProps) {
     labelClass += " complete line-through text-slate-400";
   }
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <li
